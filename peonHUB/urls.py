@@ -8,7 +8,6 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'upload.views.home', name='home'),
     url(r'^upload/', include('fileupload.urls')),
-    url(r'^accounts/', include('registration.urls')),
     #url(r'^admin/(.*)', admin.site.root),
     url(r'^accounts/', include('registration.urls')),
     url(r'^$', direct_to_template, 
