@@ -20,20 +20,18 @@ DATABASES = {
     }
 }
 
-# Local time zone for this installation. Choices can be found here:
-# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-# although not all choices may be available on all operating systems.
-# On Unix systems, a value of None will cause Django to use the same
-# timezone as the operating system.
-# If running in a Windows environment this must be set to the same as your
-# system time zone.
+
 TIME_ZONE = 'America/Chicago'
 
-# Language code for this installation. All choices can be found here:
-# http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
 
 SITE_ID = 1
+
+TEMPLATE_DIRS = (
+   #'/Users/xxx/Projects/Django/reg/templates/'
+   os.path.join(PROJECT_ROOT, 'registration/templates/'),
+   #os.path.join(PROJECT_ROOT, 'fileupload/templates/'),
+)
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -44,7 +42,6 @@ USE_I18N = True
 USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
-# Example: "/home/media/media.lawrence.com/media/"
 #MEDIA_ROOT = os.path.abspath(os.path.dirname(__file__)) + '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 
@@ -65,7 +62,6 @@ STATIC_URL = '/static/'
 
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
-# Examples: "http://foo.com/static/admin/", "/static/admin/".
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
@@ -124,17 +120,14 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'fileupload',
     'registration',
-    # Uncomment the next line to enable the admin:
     'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error.
-# See http://docs.djangoproject.com/en/dev/topics/logging for
-# more details on how to customize your logging configuration.
+# See http://docs.djangoproject.com/en/dev/topics/logging 
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
