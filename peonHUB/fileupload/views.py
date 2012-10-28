@@ -1,9 +1,14 @@
 from fileupload.models import Picture
 from django.views.generic import CreateView, DeleteView
+from django.contrib.auth.decorators import login_required
+import os
+PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
+MEDIA_ROOT =os.path.join(PROJECT_ROOT, '/media/pictures')
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import simplejson
 from django.core.urlresolvers import reverse
+from django.shortcuts import render_to_response
 
 from django.conf import settings
 
@@ -12,9 +17,17 @@ def response_mimetype(request):
         return "application/json"
     else:
         return "text/plain"
+@login_required
+def gallery(request):
+    path=os.path.realpath(os.path.dirname(__file__))
+    #file_list=os.listdir(os.path.join(path, '/media/pictures/'))
+    file_list=os.listdir("/home/peon/peonHUB/peonHUB/media/pictures/")
+    return render_to_response('list2.html', {'files': file_list})
+
 
 class PictureCreateView(CreateView):
     model = Picture
+
 
     def form_valid(self, form):
         self.object = form.save()
@@ -28,13 +41,13 @@ class PictureCreateView(CreateView):
 class PictureDeleteView(DeleteView):
     model = Picture
 
+
     def delete(self, request, *args, **kwargs):
-        """
-        This does not actually delete the file, only the database record.  But
-        that is easy to implement.
-        """
+
         self.object = self.get_object()
-        self.object.delete()
+        self.object.file.delete()
+        self.object.delete(save=False)
+        #os.remove(path)
         if request.is_ajax():
             response = JSONResponse(True, {}, response_mimetype(self.request))
             response['Content-Disposition'] = 'inline; filename=files.json'

@@ -1,18 +1,18 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>{% block title %}peonHUB{% endblock %}</title>
+    <title>peonHUB</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Bootstrap CSS Toolkit styles -->
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
     <!-- Generic page styles -->
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
     <!-- Bootstrap styles for responsive website layout, supporting different screen sizes -->
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="../../css/bootstrap-responsive.min.css">
     <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-image-gallery.min.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.fileupload-ui.css">
+    <link rel="stylesheet" href="../../css/bootstrap-image-gallery.min.css">
+    <link rel="stylesheet" href="../../css/jquery.fileupload-ui.css">
     <!-- Shim to make HTML5 elements usable in older Internet Explorer versions -->
     <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
@@ -29,31 +29,39 @@
                 <div class="nav-collapse">
                     <ul class="nav">
                         <li class="active"><a href="/upload/new/">Upload</a></li>
-			<li><a href="/upload/list/">File List</a></li>
-                        <li><a href="https://github.com/peondusud/peonHUB">Source Code</a></li>
-                        <li><a href="/accounts/login">Login</a></li>
-			<li><a href="/accounts/register">Register</a></li>
+			<li><a href="/upload/list">File List</a></li>
+                        <li><a href="/accounts/login/">Login</a></li>
+			<li><a href="/accounts/register/">Register</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-
-
-    <div id="sidebar">
-        {% block sidebar %}{% endblock %}
-    </div>
-
+</div>
+{% block content %}
 <div class="container"> 
     <div class="page-header"> 
         <h1>File List</h1> 
     </div> 
     <div class="body"> 
-    <div id="content">
-        {% block content %}{% endblock %}
-	{% block main_content %}{% endblock %}
+    <table>
+
+
+{% for file in files %}
+    <tr>
+    <td>
+    <a href="/media/pictures/{{file}}">{{file}}</a></li>
+    </td>
+    </tr>
+
+{% endfor %}
+
+    </table>
+
     </div>
 </div>
-</div>
+
+
+{% endblock %}
 </body>
 </html>

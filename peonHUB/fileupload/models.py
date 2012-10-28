@@ -13,6 +13,9 @@ class Picture(models.Model):
     def __unicode__(self):
         return self.file
 
+    def getFileName(self):
+        return self.docfile.name
+
     @models.permalink
     def get_absolute_url(self):
         return ('upload-new', )

@@ -76,8 +76,8 @@ ACCOUNT_ACTIVATION_DAYS = 2
 LOGIN_REDIRECT_URL = '/upload/new/'
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
-EMAIL_HOST_USER = "
-EMAIL_HOST_PASSWORD = "
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = False
 DEFAULT_FROM_EMAIL = 'webmaster@peondusud.org'
 #python -m smtpd -n -c DebuggingServer localhost:1025

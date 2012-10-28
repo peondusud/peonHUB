@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+
+    <table>
+
+
+{% for file in files %}
+    <tr>
+    <td>
+    <a href="/media/pictures/{{file}}">{{file}}</a></li>
+    </td>
+    </tr>
+
+{% endfor %}
+
+    </table>
+
+    </div>
+</div>
+
+{% endblock %}
