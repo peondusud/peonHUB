@@ -29,7 +29,8 @@ SITE_ID = 1
 
 TEMPLATE_DIRS = (
    #'/Users/xxx/Projects/Django/reg/templates/'
-   os.path.join(PROJECT_ROOT, 'registration/templates/'),
+   '/home/peon/peonHUB/peonHUB/registration'
+   #os.path.join(PROJECT_ROOT, 'registration/templates/'),
    #os.path.join(PROJECT_ROOT, 'fileupload/templates/'),
 )
 
@@ -72,9 +73,14 @@ STATICFILES_DIRS = (
 )
 
 ACCOUNT_ACTIVATION_DAYS = 2
+LOGIN_REDIRECT_URL = '/upload/new/'
 EMAIL_HOST = 'localhost'
-DEFAULT_FROM_EMAIL = 'webmaster@localhost'
-LOGIN_REDIRECT_URL = '/'
+EMAIL_PORT = 1025
+EMAIL_HOST_USER = "
+EMAIL_HOST_PASSWORD = "
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'webmaster@peondusud.org'
+#python -m smtpd -n -c DebuggingServer localhost:1025
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -103,7 +109,6 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'peonHUB.urls'
-#ROOT_URLCONF = 'django-jquery-file-upload.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -121,6 +126,7 @@ INSTALLED_APPS = (
     'fileupload',
     'registration',
     'django.contrib.admin',
+    'django.contrib.humanize',
     # 'django.contrib.admindocs',
 )
 
