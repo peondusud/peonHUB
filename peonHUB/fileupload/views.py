@@ -2,8 +2,7 @@ from fileupload.models import Picture
 from django.views.generic import CreateView, DeleteView
 from django.contrib.auth.decorators import login_required
 import os
-PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
-MEDIA_ROOT =os.path.join(PROJECT_ROOT, '/media/pictures')
+from peonHUB.settings import *
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import simplejson
@@ -19,9 +18,7 @@ def response_mimetype(request):
         return "text/plain"
 @login_required
 def gallery(request):
-    path=os.path.realpath(os.path.dirname(__file__))
-    #file_list=os.listdir(os.path.join(path, '/media/pictures/'))
-    file_list=os.listdir("/home/peon/peonHUB/peonHUB/media/pictures/")
+    file_list= os.listdir(MEDIA_ROOT+'/pictures/')
     return render_to_response('list2.html', {'files': file_list})
 
 

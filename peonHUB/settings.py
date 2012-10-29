@@ -28,10 +28,8 @@ LANGUAGE_CODE = 'en-us'
 SITE_ID = 1
 
 TEMPLATE_DIRS = (
-   #'/Users/xxx/Projects/Django/reg/templates/'
-   '/home/peon/peonHUB/peonHUB/registration'
-   #os.path.join(PROJECT_ROOT, 'registration/templates/'),
-   #os.path.join(PROJECT_ROOT, 'fileupload/templates/'),
+   os.path.join(PROJECT_ROOT, 'registration/templates/'),
+   os.path.join(PROJECT_ROOT, 'fileupload/templates/'),
 )
 
 # If you set this to False, Django will make some optimizations so as not
